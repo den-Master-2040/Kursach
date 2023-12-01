@@ -3,7 +3,7 @@
 namespace app\controllers;
 
 use app\models\User;
-use app;
+
 
 class UserController extends \yii\web\Controller
 {
@@ -23,15 +23,21 @@ class UserController extends \yii\web\Controller
         mysqli_set_charset($connect, "utf8"); // Устанавливаем кодировку UTF-8 для работы с русскими символами
         //end connect
 
+
         //create query and send
-        $query = "INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `phone`, `password`, `data_birthday`, `token`, `admin`) VALUES ($id_user, $first_name, $last_name, $email, $phone, $password, $data_birthday, $token, $admin);";
-        $result = mysqli_query($connect, $query);    
-        $row = mysqli_fetch_assoc($result);
-        //$db = require __DIR__ . '/db.php';
-        //$db->
-        //$post = $db->createCommand("SELECT * FROM post WHERE id=1")
-          // ->queryOne();
-        Yii::$app->response->statusCode = 200;
-        return null;
+        $query = "INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `phone`, `password`, `data_birthday`, `token`, `admin`) 
+            VALUES ('131', 'Руслан2', 'Долуханов4', 'ryslanchick@mak.ri4', '1', '1', '2023-12-08', '1', '0');";
+            
+        $result = mysqli_query($connect, $query);
+        
+        if($result){
+            \yii:: $app->response->statusCode = 204;
+            return null;
+        }            
+        else{
+            \yii::$app->response->statusCode = 422;
+            return null;
+        }
+            
     }
 }
