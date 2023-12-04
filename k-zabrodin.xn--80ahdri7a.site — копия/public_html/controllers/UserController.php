@@ -12,7 +12,7 @@ class UserController extends \yii\web\Controller
     {
         return $this->render('index');
     }
-    public function actionRegister($id_user, $first_name, $last_name, $email, $phone, $password, $data_birthday,$token ,$admin)
+    public function actionRegister($first_name, $last_name, $email, $phone, $password, $data_birthday,$token ,$admin)
     {
         //POST
         //Регистрация пользователя
@@ -28,8 +28,8 @@ class UserController extends \yii\web\Controller
         mysqli_set_charset($connect, "utf8");
 
         //create query
-        $query = "INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `phone`, `password`, `data_birthday`, `token`, `admin`) 
-            VALUES ('{$id_user}', '{$first_name}', '{$last_name}','{$email}','{$phone}','{$password}', '{$data_birthday}','{$token }','{$admin}');";
+        $query = "INSERT INTO `user` ('first_name', `last_name`, `email`, `phone`, `password`, `data_birthday`, `token`, `admin`) 
+            VALUES ('{$first_name}', '{$last_name}','{$email}','{$phone}','{$password}', '{$data_birthday}','{$token }','{$admin}');";
         
         //send query and get result
         $result = mysqli_query($connect, $query);
