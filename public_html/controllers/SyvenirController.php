@@ -25,6 +25,8 @@ class obj_syvenir
 
 class SyvenirController extends \yii\web\Controller
 { 
+    public $modelClass = 'app\models\User';
+    
     public function behaviors()
     {
         $behaviors = parent::behaviors();
@@ -143,7 +145,7 @@ class SyvenirController extends \yii\web\Controller
             
     }
 
-    public function actionPay($id_syvenir)
+    public function actionPay($id_syvenir, $token)
     {
         $host = 'localhost';
         $user = 'root';
@@ -152,12 +154,20 @@ class SyvenirController extends \yii\web\Controller
         $connect = mysqli_connect($host, $user, $pass, $database);
         mysqli_set_charset($connect, "utf8");
         
+        $query = "SELECT * FROM user WHERE token = '{$token}'";
 
-        $user = \yii::$app->user->getId();
+        $result = mysqli_query($connect, $query);
+        
+        $row=mysqli_fetch_array($result);
+
+        
+        
+        $id_user = $row['id'];
         //create query
-        $query = "INSERT INTO `korzina` (`id_user`, `idsyvenir`, `kolichestvo`) VALUES ('{$user}','{$id_syvenir}', '1');";
+        $query = "INSERT INTO `korzina` (`id_user`, `idsyvenir`, `kolichestvo`) VALUES ('{$id_user}','{$id_syvenir}', '1');";
 
-       $result = mysqli_query($connect, $query);
+        $result = mysqli_query($connect, $query);
+      
         
         //check result
         if($result){

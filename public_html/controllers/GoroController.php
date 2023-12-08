@@ -24,6 +24,7 @@ class Obj_Syvenir
 
 class GoroController extends \yii\web\Controller
 {
+    public $modelClass = 'app\models\User';
     public function actionIndex()
     {
         return $this->render('index');

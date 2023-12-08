@@ -88,7 +88,7 @@ class UserController extends \yii\web\Controller
             return $post_data;
         }
 
-       
+        Yii::$app->user->login($email);
 
         $jwtUtil = new jwtUtil();
         
