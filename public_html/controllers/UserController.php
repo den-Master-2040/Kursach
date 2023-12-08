@@ -3,8 +3,9 @@
 namespace app\controllers;
 
 use app\models\User;
-
-
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+use app\components\JwtUtil;
 class UserController extends \yii\web\Controller
 {
    
@@ -86,14 +87,15 @@ class UserController extends \yii\web\Controller
 
             return $post_data;
         }
+
+       
+
+        $jwtUtil = new jwtUtil();
         
-        \yii:: $app->response->statusCode = 201;        
-        $post_data = array(  
-            'message' => "Successful login",               
-            'Token' => $row['id']
-           );
-        $post_data = json_encode(array('' => $post_data), JSON_FORCE_OBJECT);
-        return $post_data;
+        $token = $jwtUtil->generateToken($row['id']);
+        
+        return $token;
     }
+
 }
 

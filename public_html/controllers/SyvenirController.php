@@ -5,7 +5,7 @@ namespace app\controllers;
 use yii\filters\auth\HttpBearerAuth;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-
+use app\models\User;
 class obj_syvenir
 {
     public $id;
@@ -30,7 +30,7 @@ class SyvenirController extends \yii\web\Controller
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => HttpBearerAuth::class,
-            'only' =>['test']
+            'only' =>['Pay']
         ];
         return $behaviors;
     }
@@ -143,15 +143,36 @@ class SyvenirController extends \yii\web\Controller
             
     }
 
-    public function actionTest()
+    public function actionPay($id_syvenir)
     {
-        //$token = parent::behaviors();
-        //$post_data = json_encode($token, JSON_UNESCAPED_UNICODE);
-        return "post_data";
+        $host = 'localhost';
+        $user = 'root';
+        $pass = '';
+        $database = 'zabrodin_zabrodin_K';
+        $connect = mysqli_connect($host, $user, $pass, $database);
+        mysqli_set_charset($connect, "utf8");
+        
+
+        $user = \yii::$app->user->getId();
+        //create query
+        $query = "INSERT INTO `korzina` (`id_user`, `idsyvenir`, `kolichestvo`) VALUES ('{$user}','{$id_syvenir}', '1');";
+
+       $result = mysqli_query($connect, $query);
+        
+        //check result
+        if($result){
+            \yii:: $app->response->statusCode = 201;
+            return null;
+        }            
+        else{
+            \yii::$app->response->statusCode = 404;
+            $post_data = array(                
+                'code' => 422,
+                'message' => "Syv not found");
+        }
+        $post_data = json_encode(array('error' => $post_data), JSON_FORCE_OBJECT);
+
+        return $post_data;
     }
    
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        //return static::findOne(['access_token' => $token]);
-    }
 }

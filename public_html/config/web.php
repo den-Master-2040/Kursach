@@ -52,7 +52,9 @@ $config = [
             'rules' => [
             ],
         ],
-        
+        'jwtUtil' => [
+                 'class' => 'app\components\JwtUtil',
+             ],
         /*urlManager' => [
 'enablePrettyUrl' => true,
 'enableStrictParsing' => true,

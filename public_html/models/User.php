@@ -2,7 +2,9 @@
 
 namespace app\models;
 use yii\db\ActiveRecord;
-
+use Yii;
+use app\components\JwtUtil;
+use yii\web\IdentityInterface;
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
     public $id;
@@ -42,9 +44,22 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
+        $jwtUtil = new jwtUtil();
 
+        $token_split = explode(' ', $token);
 
-        return static::findOne(['token' => $token]);
+        try {
+            $userId = $jwtUtil->validateToken($token_split[1]);
+        } catch (Yii\base\ErrorException $e) {
+            $userId = $jwtUtil->validateToken($token);
+        }
+
+        
+
+        // логиним пользователя
+        Yii::$app->user->login($userId);
+        $id = $userId;
+        return static::findOne(['id' => $userId]);
     }
 
     /**
