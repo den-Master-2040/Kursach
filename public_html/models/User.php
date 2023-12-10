@@ -5,6 +5,9 @@ use yii\db\ActiveRecord;
 use Yii;
 use app\components\JwtUtil;
 use yii\web\IdentityInterface;
+
+
+
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
     public $id;
@@ -53,12 +56,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         } catch (Yii\base\ErrorException $e) {
             $userId = $jwtUtil->validateToken($token);
         }
-
         
-
-        // логиним пользователя
-        Yii::$app->user->login($userId);
-        $id = $userId;
         return static::findOne(['id' => $userId]);
     }
 

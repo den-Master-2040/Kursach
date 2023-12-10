@@ -29,6 +29,8 @@ class GoroController extends \yii\web\Controller
     {
         return $this->render('index');
     }
+
+    
     public function actionIdgoro($id_goro)
     {
         //POST
@@ -94,6 +96,7 @@ class GoroController extends \yii\web\Controller
         $connect = mysqli_connect($host, $user, $pass, $database);
         mysqli_set_charset($connect, "utf8");
 
+        
         //create query
         $query = "SELECT * FROM goro";
         
@@ -137,5 +140,215 @@ class GoroController extends \yii\web\Controller
         
             
     }
+
+    public function actionInsert($title, $date, $discryption, $image, $token)
+    {
+        //POST
+        //Вставка нового гороскопа
+        //{host}/api/register
+        //real url:http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/register&id_user=5&first_name=342342&last_name=1&email=3&phone=2&password=4&data_birthday=20120810&token=231&admin=0
+
+        //connect to Database
+        $host = 'localhost';
+        $user = 'root';
+        $pass = '';
+        $database = 'zabrodin_zabrodin_K';
+        $connect = mysqli_connect($host, $user, $pass, $database);
+        mysqli_set_charset($connect, "utf8");
+
+
+        $query = "SELECT * FROM user WHERE token = '{$token}'";
+
+        $result = mysqli_query($connect, $query);
+        
+        if(!$result){         
+            \yii::$app->response->statusCode = 401;
+            $post_data = array(                
+                'code' => 401,
+                'message' => "No user...");
+            $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
+
+            return $post_data;
+        }
+
+        $row=mysqli_fetch_array($result);
+
+
+        if(!$row['admin']) 
+        {         //если 0, значит нет прав
+            \yii::$app->response->statusCode = 401;
+            $post_data = array(                
+                'code' => 403,
+                'message' => "Отсутствуют права администратора ");
+            $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
+
+            return $post_data;
+        }  
+
+        //create query
+        $query = "INSERT INTO `goro`  (`title`, `date`, `discryption`, `image`) VALUES ('{$title}', '{$date}', '{$discryption}', '{$image}');";
+        
+        //send query and get result
+        $result = mysqli_query($connect, $query);       
+
+        
+        if(!$result){         
+            \yii::$app->response->statusCode = 401;
+            $post_data = array(                
+                'code' => 401,
+                'message' => "Error...");
+            $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
+
+            return $post_data;
+        }
+        
+        \yii:: $app->response->statusCode = 201;        
+        $post_data = array(  
+            'message' => "Гороскоп Овен успешно добавлен в систему.”",               
+            
+           );
+        $post_data = json_encode(array('' => $post_data), JSON_UNESCAPED_UNICODE);
+        return $post_data;
+                   
+        
+            
+    }
+    public function actionDeletesystem($id_goro, $token)
+    {
+        $host = 'localhost';
+        $user = 'root';
+        $pass = '';
+        $database = 'zabrodin_zabrodin_K';
+        $connect = mysqli_connect($host, $user, $pass, $database);
+        mysqli_set_charset($connect, "utf8");
+        
+        $query = "SELECT * FROM user WHERE token = '{$token}'";
+
+        $result = mysqli_query($connect, $query);
+        
+        if(!$result){         
+            \yii::$app->response->statusCode = 401;
+            $post_data = array(                
+                'code' => 401,
+                'message' => "No user...");
+            $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
+
+            return $post_data;
+        }
+
+        $row=mysqli_fetch_array($result);
+
+
+        if(!$row['admin']) 
+        {         //если 0, значит нет прав
+            \yii::$app->response->statusCode = 401;
+            $post_data = array(                
+                'code' => 403,
+                'message' => "Отсутствуют права администратора ");
+            $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
+
+            return $post_data;
+        }  
+
+        //create query
+        $query = "DELETE FROM `goro` WHERE id = '{$id_goro}' LIMIT 1";
+
+        $result = mysqli_query($connect, $query);
+      
+        
+        //check result
+        if($result){
+            \yii:: $app->response->statusCode = 201;
+            
+            $post_data = array(                
+                'code' => 201,
+                'message' => "Гороскоп успешно удалён из системы");
+            $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
+
+            return $post_data;
+        }            
+        else{
+            \yii::$app->response->statusCode = 404;
+            $post_data = array(                
+                'code' => 422,
+                'message' => "Syv not found in korzina");
+        }
+        $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
+
+        return $post_data;
+    }
+
     
+    public function actionUpdate($id, $title, $date, $discryption, $image, $token)
+    {
+        //POST
+        //Вставка нового гороскопа
+        //{host}/api/register
+        //real url:http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/register&id_user=5&first_name=342342&last_name=1&email=3&phone=2&password=4&data_birthday=20120810&token=231&admin=0
+
+        //connect to Database
+        $host = 'localhost';
+        $user = 'root';
+        $pass = '';
+        $database = 'zabrodin_zabrodin_K';
+        $connect = mysqli_connect($host, $user, $pass, $database);
+        mysqli_set_charset($connect, "utf8");
+
+
+        $query = "SELECT * FROM user WHERE token = '{$token}'";
+
+        $result = mysqli_query($connect, $query);
+        
+        if(!$result){         
+            \yii::$app->response->statusCode = 401;
+            $post_data = array(                
+                'code' => 401,
+                'message' => "No user...");
+            $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
+
+            return $post_data;
+        }
+
+        $row=mysqli_fetch_array($result);
+
+
+        if(!$row['admin']) 
+        {         //если 0, значит нет прав
+            \yii::$app->response->statusCode = 401;
+            $post_data = array(                
+                'code' => 403,
+                'message' => "Отсутствуют права администратора ");
+            $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
+
+            return $post_data;
+        }  
+
+        //create query ('{$title}', '{$date}', '{$discryption}', '{$image}');";
+        $query = "UPDATE `goro` SET title = $title, date = '{$date}', discryption = $discryption, image = $image WHERE id = $id;";
+        
+        //send query and get result
+        $result = mysqli_query($connect, $query);       
+
+        
+        if(!$result){         
+            \yii::$app->response->statusCode = 401;
+            $post_data = array(                
+                'code' => 401,
+                'message' => "Error...");
+            $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
+
+            return $post_data;
+        }
+        
+        \yii:: $app->response->statusCode = 201;        
+        $post_data = array(  
+            'message' => "Гороскоп Овен успешно добавлен в систему.”",               
+            
+           );
+        $post_data = json_encode(array('' => $post_data), JSON_UNESCAPED_UNICODE);
+        return $post_data;
+                   
+        
+            
+    }
 }
