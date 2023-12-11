@@ -33,10 +33,9 @@ class GoroController extends \yii\web\Controller
     
     public function actionIdgoro($id_goro)
     {
-        //POST
+        
         //Регистрация пользователя
-        //{host}/api/register
-        //real url:http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/register&id_user=5&first_name=342342&last_name=1&email=3&phone=2&password=4&data_birthday=20120810&token=231&admin=0
+        
 
         //connect to Database
         $host = 'localhost';
@@ -83,10 +82,9 @@ class GoroController extends \yii\web\Controller
     }
     public function actionAllgoro()
     {
-        //POST
+        
         //Регистрация пользователя
-        //{host}/api/register
-        //real url:http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/register&id_user=5&first_name=342342&last_name=1&email=3&phone=2&password=4&data_birthday=20120810&token=231&admin=0
+        
 
         //connect to Database
         $host = 'localhost';
@@ -143,10 +141,9 @@ class GoroController extends \yii\web\Controller
 
     public function actionInsert($title, $date, $discryption, $image, $token)
     {
-        //POST
-        //Вставка нового гороскопа
-        //{host}/api/register
-        //real url:http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/register&id_user=5&first_name=342342&last_name=1&email=3&phone=2&password=4&data_birthday=20120810&token=231&admin=0
+        
+        
+        
 
         //connect to Database
         $host = 'localhost';
@@ -281,11 +278,6 @@ class GoroController extends \yii\web\Controller
     
     public function actionUpdate($id, $title, $date, $discryption, $image, $token)
     {
-        //POST
-        //Вставка нового гороскопа
-        //{host}/api/register
-        //real url:http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/register&id_user=5&first_name=342342&last_name=1&email=3&phone=2&password=4&data_birthday=20120810&token=231&admin=0
-
         //connect to Database
         $host = 'localhost';
         $user = 'root';

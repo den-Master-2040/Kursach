@@ -41,10 +41,9 @@ class UserController extends \yii\web\Controller
     }
     public function actionRegister($first_name, $last_name, $email, $phone, $password, $data_birthday ,$admin)
     {
-        //POST
+        
         //Регистрация пользователя
-        //{host}/api/register
-        //real url:http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/register&id_user=5&first_name=342342&last_name=1&email=3&phone=2&password=4&data_birthday=20120810&admin=0
+        
 
         //connect to Database
         $host = 'localhost';
@@ -82,10 +81,9 @@ class UserController extends \yii\web\Controller
 
     public function actionLogin($email, $password)
     {
-        //POST
+        
         //Регистрация пользователя
-        //{host}/api/register
-        //real url:http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/register&id_user=5&first_name=342342&last_name=1&email=3&phone=2&password=4&data_birthday=20120810&token=231&admin=0
+        
 
         //connect to Database
         $host = 'localhost';
@@ -114,20 +112,26 @@ class UserController extends \yii\web\Controller
             return $post_data;
         }
 
-        Yii::$app->user->login($email);
+        //\yii::$app->user->login($email);
 
         $jwtUtil = new jwtUtil();
         
         $token = $jwtUtil->generateToken($row['id']);
         
-        return $token;
+        \yii::$app->response->statusCode = 201;
+            $post_data = array(                
+                
+                'message' => "Успешный вход в аккаунт",
+                'token'=> $token);
+            $post_data = json_encode($post_data, JSON_FORCE_OBJECT);
+
+        return $post_data;
     }
     public function actionGetone($id, $token)
     {
-        //POST
-        //Вставка нового гороскопа
-        //{host}/api/register
-        //real url:http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/register&id_user=5&first_name=342342&last_name=1&email=3&phone=2&password=4&data_birthday=20120810&token=231&admin=0
+        
+        
+        
 
         //connect to Database
         $host = 'localhost';
@@ -216,10 +220,9 @@ class UserController extends \yii\web\Controller
 
     public function actionGetall($token)
     {
-        //POST
-        //Вставка нового гороскопа
-        //{host}/api/register
-        //real url:http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/register&id_user=5&first_name=342342&last_name=1&email=3&phone=2&password=4&data_birthday=20120810&token=231&admin=0
+        
+        
+        
 
         //connect to Database
         $host = 'localhost';
@@ -312,10 +315,9 @@ class UserController extends \yii\web\Controller
 
     public function actionUpdate($id, $first_name, $last_name, $email, $phone, $password, $data_birthday, $token_user ,$admin, $token)
     {
-        //POST
-        //Вставка нового гороскопа
-        //{host}/api/register
-        //real url:http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/register&id_user=5&first_name=342342&last_name=1&email=3&phone=2&password=4&data_birthday=20120810&token=231&admin=0
+        
+        
+        
 
         //connect to Database
         $host = 'localhost';
@@ -384,10 +386,9 @@ class UserController extends \yii\web\Controller
     }
     public function actionDelete($id, $token)
     {
-        //POST
-        //Вставка нового гороскопа
-        //{host}/api/register
-        //real url:http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/register&id_user=5&first_name=342342&last_name=1&email=3&phone=2&password=4&data_birthday=20120810&token=231&admin=0
+        
+        
+        
 
         //connect to Database
         $host = 'localhost';
