@@ -129,10 +129,6 @@ class UserController extends \yii\web\Controller
     }
     public function actionGetone($id, $token)
     {
-        
-        
-        
-
         //connect to Database
         $host = 'localhost';
         $user = 'root';
@@ -146,17 +142,17 @@ class UserController extends \yii\web\Controller
 
         $result = mysqli_query($connect, $query);
         
-        if(!$result){         
+        $row=mysqli_fetch_array($result);
+
+        if($result == 0  || $row == 0){         
             \yii::$app->response->statusCode = 401;
             $post_data = array(                
-                'code' => 401,
-                'message' => "No user...");
-            $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
+                'code' => 404,
+                'message' => "Пользователь, запрашивающий данные не найден");
+            $post_data = json_encode($post_data, JSON_UNESCAPED_UNICODE);
 
             return $post_data;
-        }
-
-        $row=mysqli_fetch_array($result);
+        }       
 
 
         if(!$row['admin']) 
@@ -164,7 +160,7 @@ class UserController extends \yii\web\Controller
             \yii::$app->response->statusCode = 401;
             $post_data = array(                
                 'code' => 403,
-                'message' => "Отсутствуют права администратора ");
+                'message' => "Действие отклонено, потому что вы не администратор ");
             $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
 
             return $post_data;
@@ -179,11 +175,11 @@ class UserController extends \yii\web\Controller
 
         $row=mysqli_fetch_array($result); 
 
-        if($row== null) {         
-            \yii::$app->response->statusCode = 401;
+        if($row== null || $result == 0) {         
+            \yii::$app->response->statusCode = 404;
             $post_data = array(                
-                'code' => 401,
-                'message' => "Error...");
+                'code' => 404,
+                'message' => "Пользователь не найден");
             $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
 
             return $post_data;
@@ -193,36 +189,19 @@ class UserController extends \yii\web\Controller
 
         $obj_goro->setAllField($row);
 
-        
-        
-        
-        if(!$result){         
-            \yii::$app->response->statusCode = 401;
-            $post_data = array(                
-                'code' => 401,
-                'message' => "Error...");
-            $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
-
-            return $post_data;
-        }
-        
-        \yii:: $app->response->statusCode = 201;        
-        $post_data = array(  
-            'message' => "Гороскоп Овен успешно добавлен в систему.”",               
-            'data'=>$obj_goro
-           );
-        $post_data = json_encode(array('' => $post_data), JSON_UNESCAPED_UNICODE);
+        \yii:: $app->response->statusCode = 200;        
+        $post_data = 
+                           
+            $obj_goro;
+           
+        $post_data = json_encode($post_data, JSON_UNESCAPED_UNICODE);
         return $post_data;
-                   
-        
-            
+               
     }
 
     public function actionGetall($token)
     {
-        
-        
-        
+
 
         //connect to Database
         $host = 'localhost';
@@ -272,7 +251,7 @@ class UserController extends \yii\web\Controller
             \yii::$app->response->statusCode = 401;
             $post_data = array(                
                 'code' => 401,
-                'message' => "Error...");
+                'message' => "Отсутствуют пользователи");
             $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
 
             return $post_data;
@@ -292,22 +271,19 @@ class UserController extends \yii\web\Controller
             array_push($myArray, $obj_goro);
         } while($row != null);
         
-        
         if(Empty($myArray)){         //если мы сделали 0 проходов, значит пусто в таблице или нам ничего не пришло.
             \yii::$app->response->statusCode = 401;
             $post_data = array(                
                 'code' => 401,
-                'message' => "Нет пользователей");
+                'message' => "Отсутствуют пользователи");
             $post_data = json_encode(array('error' => $post_data), JSON_UNESCAPED_UNICODE);
 
             return $post_data;
         }
         
-        \yii:: $app->response->statusCode = 201;        
-        $post_data = array(                
-            'Token' => $myArray
-           );
-        $post_data = json_encode(array('' => $post_data), JSON_UNESCAPED_UNICODE);
+        \yii:: $app->response->statusCode = 200;        
+        $post_data  = $myArray;
+        $post_data = json_encode($post_data, JSON_UNESCAPED_UNICODE);
         return $post_data;
         
             
@@ -315,9 +291,7 @@ class UserController extends \yii\web\Controller
 
     public function actionUpdate($id, $first_name, $last_name, $email, $phone, $password, $data_birthday, $token_user ,$admin, $token)
     {
-        
-        
-        
+
 
         //connect to Database
         $host = 'localhost';
@@ -386,9 +360,7 @@ class UserController extends \yii\web\Controller
     }
     public function actionDelete($id, $token)
     {
-        
-        
-        
+
 
         //connect to Database
         $host = 'localhost';

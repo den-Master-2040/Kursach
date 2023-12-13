@@ -13,12 +13,15 @@ class obj_syvenir
     public $discryption;
     public $image_path;
 
+    public $price;
+
     public function setAllField($row)
     {
         $this->id = $row['id'];
         $this->title = $row['title'];
         $this->discryption = $row['discryption'];
         $this->image_path = $row['image'];
+        $this->price = $row['price'];
     }
 
 }
@@ -77,21 +80,17 @@ class SyvenirController extends \yii\web\Controller
             'name' => $obj_syvenir->title,
             'description'=> $obj_syvenir->discryption,
             'image'=> $obj_syvenir->image_path,
-            
+            'price' =>$obj_syvenir->price
            );
         $post_data = json_encode(array($post_data), JSON_UNESCAPED_UNICODE);
         return $post_data;
-                   
-        
-            
+               
     }
-    public function actionAllgoro()
+    public function actionAllsyvenir()
     {
         
         //Регистрация пользователя
-        
-        
-        //connect to Database
+//connect to Database
         $host = 'localhost';
         $user = 'root';
         $pass = '';
@@ -119,9 +118,7 @@ class SyvenirController extends \yii\web\Controller
 
             array_push($myArray, $obj_syvenir);
         } while($row != null);
-        
-        
-        if(Empty($myArray)){         //если мы сделали 0 проходов, значит пусто в таблице или нам ничего не пришло.
+if(Empty($myArray)){         //если мы сделали 0 проходов, значит пусто в таблице или нам ничего не пришло.
             \yii::$app->response->statusCode = 401;
             $post_data = array(                
                 'code' => 401,
@@ -138,9 +135,7 @@ class SyvenirController extends \yii\web\Controller
            );
         $post_data = json_encode(array('' => $post_data), JSON_UNESCAPED_UNICODE);
         return $post_data;
-                   
-        
-            
+               
     }
 
     public function actionPay($id_syvenir, $token)
@@ -155,11 +150,17 @@ class SyvenirController extends \yii\web\Controller
         $query = "SELECT * FROM user WHERE token = '{$token}'";
 
         $result = mysqli_query($connect, $query);
-        
         $row=mysqli_fetch_array($result);
 
         
+        if($result == 0 || $row == 0){
+            \yii::$app->response->statusCode = 404;
+            $post_data = array(                
+                'code' => 422,
+                'message' => "Syv not found");
+        }
         
+
         $id_user = $row['id'];
         //create query
         $query = "INSERT INTO `korzina` (`id_user`, `idsyvenir`, `kolichestvo`) VALUES ('{$id_user}','{$id_syvenir}', '1');";
@@ -169,7 +170,7 @@ class SyvenirController extends \yii\web\Controller
         
         //check result
         if($result){
-            \yii:: $app->response->statusCode = 201;
+            \yii:: $app->response->statusCode = 200;
             return null;
         }            
         else{
@@ -191,6 +192,12 @@ class SyvenirController extends \yii\web\Controller
         $database = 'zabrodin_zabrodin_K';
         $connect = mysqli_connect($host, $user, $pass, $database);
         mysqli_set_charset($connect, "utf8");
+
+
+        $query = "SELECT * FROM syvenir WHERE";
+        
+        //send query and get result
+        $result = mysqli_query($connect, $query);   
         
         $query = "SELECT * FROM user WHERE token = '{$token}'";
 
@@ -198,9 +205,9 @@ class SyvenirController extends \yii\web\Controller
         
         $row=mysqli_fetch_array($result);
 
-        
-        
         $id_user = $row['id'];
+
+        
         //create query
         $query = "DELETE FROM `korzina` WHERE id_user = '{$id_user}' and idsyvenir = '{$id_syvenir}' LIMIT 1";
 
@@ -225,9 +232,7 @@ class SyvenirController extends \yii\web\Controller
 
     public function actionInsert($title, $discryption, $image, $price,$token)
     {
-        
-        
-        
+
 
         //connect to Database
         $host = 'localhost';
@@ -359,9 +364,7 @@ class SyvenirController extends \yii\web\Controller
 
     public function actionUpdate($id, $title, $discryption, $image, $price, $token)
     {
-        
-        
-        
+
 
         //connect to Database
         $host = 'localhost';
@@ -424,9 +427,7 @@ class SyvenirController extends \yii\web\Controller
            );
         $post_data = json_encode(array('' => $post_data), JSON_UNESCAPED_UNICODE);
         return $post_data;
-                   
-        
-            
+               
     }
    
 }

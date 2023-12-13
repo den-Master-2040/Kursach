@@ -76,9 +76,7 @@ class GoroController extends \yii\web\Controller
            );
         $post_data = json_encode(array($post_data), JSON_UNESCAPED_UNICODE);
         return $post_data;
-                   
-        
-            
+               
     }
     public function actionAllgoro()
     {
@@ -115,9 +113,7 @@ class GoroController extends \yii\web\Controller
 
             array_push($myArray, $obj_goro);
         } while($row != null);
-        
-        
-        if(Empty($myArray)){         //если мы сделали 0 проходов, значит пусто в таблице или нам ничего не пришло.
+if(Empty($myArray)){         //если мы сделали 0 проходов, значит пусто в таблице или нам ничего не пришло.
             \yii::$app->response->statusCode = 401;
             $post_data = array(                
                 'code' => 401,
@@ -134,16 +130,12 @@ class GoroController extends \yii\web\Controller
            );
         $post_data = json_encode(array('' => $post_data), JSON_UNESCAPED_UNICODE);
         return $post_data;
-                   
-        
-            
+               
     }
 
     public function actionInsert($title, $date, $discryption, $image, $token)
     {
-        
-        
-        
+
 
         //connect to Database
         $host = 'localhost';
@@ -206,9 +198,7 @@ class GoroController extends \yii\web\Controller
            );
         $post_data = json_encode(array('' => $post_data), JSON_UNESCAPED_UNICODE);
         return $post_data;
-                   
-        
-            
+               
     }
     public function actionDeletesystem($id_goro, $token)
     {
@@ -339,8 +329,6 @@ class GoroController extends \yii\web\Controller
            );
         $post_data = json_encode(array('' => $post_data), JSON_UNESCAPED_UNICODE);
         return $post_data;
-                   
-        
-            
+               
     }
 }
