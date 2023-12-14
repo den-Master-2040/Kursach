@@ -1,0 +1,349 @@
+{
+	"info": {
+		"_postman_id": "6ead67f9-b84d-4246-a324-76941d77cbcb",
+		"name": "user_controller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30753599"
+	},
+	"item": [
+		{
+			"name": "get_one_user Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=user/getone&id=1&token=0",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "user/getone"
+						},
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "title",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "date",
+							"value": "2002-10-10",
+							"disabled": true
+						},
+						{
+							"key": "discryption",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "image",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updpate_user Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/public_html/web/index.php?r=user/update&id=11&first_name=Илья&last_name=Анохин&email=Mafos2022@mail.ru1&phone=79057777&password=12345&data_birthday=2005-08-10&token_user=123&admin=0&token=0",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай",
+						"site"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "user/update"
+						},
+						{
+							"key": "id",
+							"value": "11"
+						},
+						{
+							"key": "first_name",
+							"value": "Илья"
+						},
+						{
+							"key": "last_name",
+							"value": "Анохин"
+						},
+						{
+							"key": "email",
+							"value": "Mafos2022@mail.ru1"
+						},
+						{
+							"key": "phone",
+							"value": "79057777"
+						},
+						{
+							"key": "password",
+							"value": "12345"
+						},
+						{
+							"key": "data_birthday",
+							"value": "2005-08-10"
+						},
+						{
+							"key": "token_user",
+							"value": "123"
+						},
+						{
+							"key": "admin",
+							"value": "0"
+						},
+						{
+							"key": "token",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register_new_user Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=user/register&first_name=Илья&last_name=Анохин&email=Mafos2022@mail.ru1&phone=79057777&password=12345&data_birthday=2005-08-10&admin=0",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "user/register"
+						},
+						{
+							"key": "id",
+							"value": "11",
+							"disabled": true
+						},
+						{
+							"key": "first_name",
+							"value": "Илья"
+						},
+						{
+							"key": "last_name",
+							"value": "Анохин"
+						},
+						{
+							"key": "email",
+							"value": "Mafos2022@mail.ru1"
+						},
+						{
+							"key": "phone",
+							"value": "79057777"
+						},
+						{
+							"key": "password",
+							"value": "12345"
+						},
+						{
+							"key": "data_birthday",
+							"value": "2005-08-10"
+						},
+						{
+							"key": "token_user",
+							"value": "123",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "0"
+						},
+						{
+							"key": "token",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_user Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=user/login&email=0&password=0",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "user/login"
+						},
+						{
+							"key": "email",
+							"value": "0"
+						},
+						{
+							"key": "password",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delet_user Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=user/delete&id=5&token=0",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "user/delete"
+						},
+						{
+							"key": "id",
+							"value": "5"
+						},
+						{
+							"key": "first_name",
+							"value": "Илья",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "Анохин",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "Mafos2022@mail.ru1",
+							"disabled": true
+						},
+						{
+							"key": "phone",
+							"value": "79057777",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "12345",
+							"disabled": true
+						},
+						{
+							"key": "data_birthday",
+							"value": "2005-08-10",
+							"disabled": true
+						},
+						{
+							"key": "token_user",
+							"value": "123",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=user/getall&token=0",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "user/getall"
+						},
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

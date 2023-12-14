@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "562f5b2f-cdd9-42ef-aa46-bd38613b6190",
+		"name": "goro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30753599"
+	},
+	"item": [
+		{
+			"name": "goro_update",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=goro/update&id=7&title=0&date=2002-10-10&discryption=0&image=0&token=0",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "goro/update"
+						},
+						{
+							"key": "id",
+							"value": "7"
+						},
+						{
+							"key": "title",
+							"value": "0"
+						},
+						{
+							"key": "date",
+							"value": "2002-10-10"
+						},
+						{
+							"key": "discryption",
+							"value": "0"
+						},
+						{
+							"key": "image",
+							"value": "0"
+						},
+						{
+							"key": "token",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletesystem_goro",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDIwMTYxMDksImp0aSI6Ik1NZ0ptMEZwRnhqZTRnUmx0dTd2UFJOdXhHSzJOYVhQR2EzNmlPU2tjZ1E9IiwiZXhwIjoxNzAyMDE5NzA5LCJkYXRhIjp7InVzZXJJZCI6IjEifX0.2QZLFQGIq-vYSjjyxCfJCvEjyg229UsihLdndPRNjpE8aGqqqA3NjCwMdchLipeqXdbQiXBqOxLr3GIPilNXqw"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=goro/deletesystem&id_goro=9&token=0",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "id_syvenir",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "the_title",
+							"disabled": true
+						},
+						{
+							"key": "date",
+							"value": "2001-01-10",
+							"disabled": true
+						},
+						{
+							"key": "discryption",
+							"value": "thediscryption",
+							"disabled": true
+						},
+						{
+							"key": "r",
+							"value": "goro/deletesystem"
+						},
+						{
+							"key": "image",
+							"value": "the_image_path",
+							"disabled": true
+						},
+						{
+							"key": "id_goro",
+							"value": "9"
+						},
+						{
+							"key": "token",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "id_goro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=goro/idgoro&id_goro=1",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "goro/idgoro"
+						},
+						{
+							"key": "id_goro",
+							"value": "1"
+						},
+						{
+							"key": "token",
+							"value": "0",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allgoro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=goro/allgoro",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "goro/allgoro"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "goro_insert",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=goro/insert&title=Новый гороскоп&date=2000-10-12&discryption=Описание нового гороскопа&image=/path_to_file&token=1",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "goro/insert"
+						},
+						{
+							"key": "title",
+							"value": "Новый гороскоп"
+						},
+						{
+							"key": "date",
+							"value": "2000-10-12"
+						},
+						{
+							"key": "discryption",
+							"value": "Описание нового гороскопа"
+						},
+						{
+							"key": "image",
+							"value": "/path_to_file"
+						},
+						{
+							"key": "token",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

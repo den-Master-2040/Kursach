@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "948a6d20-89cb-42e8-85f3-30916ffe27ec",
+		"name": "syvenir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "30753599"
+	},
+	"item": [
+		{
+			"name": "update_syvenir",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=syvenir/update&id=1222&title=Шар для гадания&discryption=Шар для гадания - описание&image=0&price=1400&token=0",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "syvenir/update"
+						},
+						{
+							"key": "id",
+							"value": "1222"
+						},
+						{
+							"key": "title",
+							"value": "Шар для гадания"
+						},
+						{
+							"key": "date",
+							"value": "2002-10-10",
+							"disabled": true
+						},
+						{
+							"key": "discryption",
+							"value": "Шар для гадания - описание"
+						},
+						{
+							"key": "image",
+							"value": "0"
+						},
+						{
+							"key": "price",
+							"value": "1400"
+						},
+						{
+							"key": "token",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "syvenir_pay",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE3MDIwMTYxMDksImp0aSI6Ik1NZ0ptMEZwRnhqZTRnUmx0dTd2UFJOdXhHSzJOYVhQR2EzNmlPU2tjZ1E9IiwiZXhwIjoxNzAyMDE5NzA5LCJkYXRhIjp7InVzZXJJZCI6IjEifX0.2QZLFQGIq-vYSjjyxCfJCvEjyg229UsihLdndPRNjpE8aGqqqA3NjCwMdchLipeqXdbQiXBqOxLr3GIPilNXqw"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=syvenir/pay&token=0&id_syvenir=1",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "syvenir/pay"
+						},
+						{
+							"key": "id_user",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "first_name",
+							"value": "342342",
+							"disabled": true
+						},
+						{
+							"key": "last_name",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "phone",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "data_birthday",
+							"value": "20120810",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "231",
+							"disabled": true
+						},
+						{
+							"key": "admin",
+							"value": "0\n",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "0"
+						},
+						{
+							"key": "id_syvenir",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "id_syvenir",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=syvenir/idsyvenir&id_syvenir=1",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "syvenir/idsyvenir"
+						},
+						{
+							"key": "title",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "discryption",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "image",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "price",
+							"value": "1500",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "0",
+							"disabled": true
+						},
+						{
+							"key": "id_syvenir",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allsyvenir",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=syvenir/allsyvenir&token=0",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "syvenir/allsyvenir"
+						},
+						{
+							"key": "id_syvenir",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_korzina",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=syvenir/deletekorzina&id_syvenir=1&token=0",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "syvenir/deletekorzina"
+						},
+						{
+							"key": "id_syvenir",
+							"value": "1"
+						},
+						{
+							"key": "token",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insert_new_syvenir",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=syvenir/insert&title=волшебная палочка&discryption=Сам по себе данный образ известен с древнейших времён — археологами были найдены древние наскальные рисунки, на которых изображены фигуры, держащие палочки, и впоследствии многие индоевропейские народы изображали своих богов с различными предметами в руках (часто подобными палке), символизирующими их власть, и имели сказания о всевозможных волшебных жезлах.&image=/11234&price=1353&token=1",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "syvenir/insert"
+						},
+						{
+							"key": "title",
+							"value": "волшебная палочка"
+						},
+						{
+							"key": "discryption",
+							"value": "Сам по себе данный образ известен с древнейших времён — археологами были найдены древние наскальные рисунки, на которых изображены фигуры, держащие палочки, и впоследствии многие индоевропейские народы изображали своих богов с различными предметами в руках (часто подобными палке), символизирующими их власть, и имели сказания о всевозможных волшебных жезлах."
+						},
+						{
+							"key": "image",
+							"value": "/11234"
+						},
+						{
+							"key": "price",
+							"value": "1353"
+						},
+						{
+							"key": "token",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete_system_syvenir",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://k-zabrodin.сделай.site/web/index.php?r=syvenir/deletesystem&id=3&token=0",
+					"protocol": "http",
+					"host": [
+						"k-zabrodin",
+						"сделай"
+					],
+					"path": [
+						"public_html",
+						"web",
+						"index.php"
+					],
+					"query": [
+						{
+							"key": "r",
+							"value": "syvenir/deletesystem"
+						},
+						{
+							"key": "id",
+							"value": "3"
+						},
+						{
+							"key": "token",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
